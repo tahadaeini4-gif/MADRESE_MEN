@@ -1,0 +1,3640 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0a">
+
+    <title>آموزشیار 13 ابان</title>
+
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+@font-face {
+    font-family: "Vazirmatn";
+    src: url("Vazirmatn-Black.ttf") format("truetype");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "MyFont";
+    src: url("fonts/MyFont.ttf") format("truetype");
+    font-display: swap;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "Vazirmatn", sans-serif;
+}
+
+body {
+    margin: 0;
+    background: #ffffff;
+    color: #1e293b;
+    min-height: 100vh;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+
+#loginPage {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(99,102,241,.08), transparent 28%),
+        radial-gradient(circle at 90% 80%, rgba(236,72,153,.07), transparent 28%),
+        #ffffff;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 1000px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 28px;
+    padding: 35px;
+    box-shadow: 0 20px 60px rgba(79,70,229,.10);
+}
+
+.login-title {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 8px;
+    color: #4f46e5;
+}
+
+.login-subtitle {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 30px;
+}
+
+.user-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 22px;
+    padding: 30px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: .25s;
+    height: 100%;
+    box-shadow: 0 8px 25px rgba(15,23,42,.05);
+}
+
+.user-card:hover {
+    transform: translateY(-6px);
+    border-color: #a5b4fc;
+    box-shadow: 0 16px 35px rgba(79,70,229,.14);
+}
+
+.user-icon {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto auto 18px;
+    font-size: 34px;
+}
+
+.user-card:nth-child(1) .user-icon {
+    color: #2563eb;
+    background: #eff6ff;
+}
+
+.user-card:nth-child(2) .user-icon {
+    color: #059669;
+    background: #ecfdf5;
+}
+
+.user-card:nth-child(3) .user-icon {
+    color: #9333ea;
+    background: #faf5ff;
+}
+
+.user-card h4 {
+    margin: 0 0 10px;
+    color: #1e293b;
+}
+
+.user-card p {
+    color: #64748b;
+    margin: 0;
+    font-size: 14px;
+}
+
+
+.top-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 75px;
+    background: rgba(255,255,255,.97);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px;
+    box-shadow: 0 3px 18px rgba(15,23,42,.05);
+}
+
+.brand {
+    font-size: 21px;
+    font-weight: bold;
+    color: #4f46e5;
+}
+
+.brand small {
+    color: #64748b;
+    font-size: 11px;
+    display: block;
+    margin-top: 3px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #475569;
+}
+
+.logout-btn {
+    border: 1px solid #fecdd3;
+    background: #fff1f2;
+    color: #e11d48;
+    border-radius: 10px;
+    padding: 9px 15px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.logout-btn:hover {
+    background: #ffe4e6;
+    transform: translateY(-1px);
+}
+
+
+.layout {
+    display: flex;
+    min-height: calc(100vh - 75px);
+}
+
+.sidebar {
+    width: 240px;
+    background: #ffffff;
+    border-left: 1px solid #e5e7eb;
+    padding: 25px 15px;
+    box-shadow: -3px 0 18px rgba(15,23,42,.04);
+}
+
+.menu-title {
+    color: #94a3b8;
+    font-size: 12px;
+    margin: 5px 12px 12px;
+}
+
+.menu-item {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: #64748b;
+    padding: 13px 15px;
+    border-radius: 12px;
+    text-align: right;
+    margin-bottom: 6px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.menu-item:hover {
+    background: #eef2ff;
+    color: #4f46e5;
+}
+
+.menu-item.active {
+    background: linear-gradient(135deg,#6366f1,#4f46e5);
+    color: #ffffff;
+    box-shadow: 0 7px 18px rgba(79,70,229,.24);
+}
+
+.main-content {
+    flex: 1;
+    padding: 30px;
+    overflow: hidden;
+}
+
+
+.page-title {
+    font-size: 28px;
+    margin-bottom: 8px;
+    color: #1e293b;
+}
+
+.page-description {
+    color: #64748b;
+    margin-bottom: 28px;
+}
+
+.panel {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 22px;
+    box-shadow: 0 7px 25px rgba(15,23,42,.04);
+}
+
+
+.class-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 23px;
+    height: 100%;
+    transition: .25s;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(15,23,42,.05);
+}
+
+.class-card:hover {
+    transform: translateY(-5px);
+    border-color: #a5b4fc;
+    box-shadow: 0 16px 35px rgba(79,70,229,.12);
+}
+
+.class-icon {
+    width: 58px;
+    height: 58px;
+    background: linear-gradient(135deg,#eef2ff,#e0e7ff);
+    color: #4f46e5;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    margin-bottom: 17px;
+}
+
+.class-card:nth-child(3n+1) .class-icon {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.class-card:nth-child(3n+2) .class-icon {
+    background: #ecfdf5;
+    color: #059669;
+}
+
+.class-card:nth-child(3n) .class-icon {
+    background: #fff7ed;
+    color: #ea580c;
+}
+
+.class-card h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #1e293b;
+}
+
+.class-card p {
+    color: #64748b;
+    font-size: 13px;
+    min-height: 45px;
+}
+
+.class-stats {
+    display: flex;
+    gap: 7px;
+    margin: 15px 0;
+}
+
+.class-stat {
+    flex: 1;
+    background: #f8fafc;
+    border: 1px solid #edf0f4;
+    border-radius: 10px;
+    padding: 9px 5px;
+    text-align: center;
+    font-size: 11px;
+    color: #64748b;
+}
+
+.class-stat strong {
+    display: block;
+    color: #4f46e5;
+    font-size: 16px;
+}
+
+
+.buy-btn,
+.primary-btn {
+    border: 0;
+    color: #ffffff;
+    width: 100%;
+    border-radius: 12px;
+    padding: 12px;
+    cursor: pointer;
+    transition: .2s;
+    font-weight: bold;
+    background: linear-gradient(135deg,#6366f1,#4f46e5);
+    box-shadow: 0 5px 15px rgba(79,70,229,.18);
+}
+
+.buy-btn:hover,
+.primary-btn:hover {
+    background: linear-gradient(135deg,#4f46e5,#4338ca);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(79,70,229,.24);
+}
+
+.secondary-btn {
+    border: 1px solid #c4b5fd;
+    background: #f5f3ff;
+    color: #7c3aed;
+    border-radius: 11px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.secondary-btn:hover {
+    background: #ede9fe;
+    transform: translateY(-1px);
+}
+
+
+#gradeSection .primary-btn {
+    background: linear-gradient(135deg,#10b981,#059669);
+}
+
+#gradeSection .primary-btn:hover {
+    background: linear-gradient(135deg,#059669,#047857);
+}
+
+#attendanceSection .primary-btn {
+    background: linear-gradient(135deg,#06b6d4,#0891b2);
+}
+
+#attendanceSection .primary-btn:hover {
+    background: linear-gradient(135deg,#0891b2,#0e7490);
+}
+
+#order .primary-btn {
+    background: linear-gradient(135deg,#f97316,#ea580c);
+}
+
+#order .primary-btn:hover {
+    background: linear-gradient(135deg,#ea580c,#c2410c);
+}
+
+
+.students-toolbar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    position: relative;
+    flex: 1;
+    min-width: 220px;
+}
+
+.search-box i {
+    position: absolute;
+    right: 15px;
+    top: 13px;
+    color: #94a3b8;
+}
+
+.search-box input {
+    width: 100%;
+    height: 48px;
+    background: #ffffff;
+    border: 1px solid #dbe2ea;
+    border-radius: 12px;
+    color: #1e293b;
+    padding: 0 45px 0 15px;
+    outline: none;
+}
+
+.search-box input:focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 3px rgba(99,102,241,.10);
+}
+
+.student-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 17px;
+    padding: 17px;
+    cursor: pointer;
+    transition: .2s;
+    height: 100%;
+    box-shadow: 0 5px 18px rgba(15,23,42,.04);
+}
+
+.student-card:hover {
+    border-color: #a5b4fc;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(79,70,229,.10);
+}
+
+.student-number {
+    width: 37px;
+    height: 37px;
+    border-radius: 10px;
+    background: #eef2ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4f46e5;
+    font-size: 13px;
+    margin-bottom: 13px;
+}
+
+.student-name {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: #1e293b;
+}
+
+.student-mini-stats {
+    display: flex;
+    gap: 5px;
+}
+
+.mini-stat {
+    flex: 1;
+    background: #f8fafc;
+    border: 1px solid #edf0f4;
+    padding: 7px 4px;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 10px;
+    color: #64748b;
+}
+
+.mini-stat strong {
+    display: block;
+    color: #4f46e5;
+    font-size: 14px;
+}
+
+
+.student-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.student-header-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.student-big-icon {
+    width: 65px;
+    height: 65px;
+    background: linear-gradient(135deg,#eef2ff,#e0e7ff);
+    color: #4f46e5;
+    border-radius: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+}
+
+.summary-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    height: 100%;
+    box-shadow: 0 5px 18px rgba(15,23,42,.04);
+}
+
+.summary-card i {
+    font-size: 24px;
+}
+
+.summary-card:nth-child(1) i {
+    color: #10b981;
+}
+
+.summary-card:nth-child(2) i {
+    color: #ef4444;
+}
+
+.summary-card:nth-child(3) i {
+    color: #2563eb;
+}
+
+.summary-card:nth-child(4) i {
+    color: #f97316;
+}
+
+.summary-card strong {
+    display: block;
+    font-size: 27px;
+    margin-top: 8px;
+    color: #1e293b;
+}
+
+.summary-card span {
+    color: #64748b;
+    font-size: 12px;
+}
+
+.section-box {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 22px;
+    margin-top: 20px;
+    box-shadow: 0 6px 20px rgba(15,23,42,.04);
+}
+
+.section-title {
+    font-size: 18px;
+    margin-bottom: 18px;
+    color: #1e293b;
+}
+
+
+.form-control,
+.form-select {
+    background: #ffffff !important;
+    color: #1e293b !important;
+    border: 1px solid #dbe2ea !important;
+    border-radius: 11px !important;
+    min-height: 45px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    box-shadow: 0 0 0 3px rgba(99,102,241,.10) !important;
+    border-color: #818cf8 !important;
+}
+
+.form-control::placeholder {
+    color: #94a3b8;
+}
+
+textarea.form-control {
+    min-height: 90px;
+}
+
+label {
+    color: #475569;
+    font-size: 13px;
+    margin-bottom: 7px;
+}
+
+
+.record-item {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 13px;
+    padding: 14px;
+    margin-bottom: 9px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.record-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.record-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #eef2ff;
+    color: #4f46e5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.record-title {
+    font-size: 14px;
+    color: #1e293b;
+}
+
+.record-note {
+    color: #64748b;
+    font-size: 11px;
+    margin-top: 3px;
+}
+
+.record-date {
+    color: #94a3b8;
+    font-size: 11px;
+}
+
+
+.modal-content {
+    background: #ffffff;
+    color: #1e293b;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    box-shadow: 0 20px 60px rgba(15,23,42,.18);
+}
+
+.modal-header {
+    border-bottom: 1px solid #e2e8f0;
+    background: #fafaff;
+}
+
+.modal-footer {
+    border-top: 1px solid #e2e8f0;
+}
+
+
+#toastBox {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    z-index: 9999;
+}
+
+.toast-message {
+    background: #312e81;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 13px 20px;
+    margin-top: 8px;
+    box-shadow: 0 10px 30px rgba(49,46,129,.25);
+    animation: toastIn .25s ease;
+}
+
+@keyframes toastIn {
+    from {
+        transform: translateY(15px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    color: #94a3b8;
+}
+
+.empty-state i {
+    font-size: 45px;
+    display: block;
+    margin-bottom: 15px;
+    color: #c4b5fd;
+}
+
+.loading {
+    text-align: center;
+    padding: 35px;
+    color: #64748b;
+}
+
+
+.mobile-nav {
+    display: none;
+}
+
+@media(max-width: 800px) {
+
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        padding: 18px;
+        padding-bottom: 85px;
+    }
+
+    .mobile-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 65px;
+        background: #ffffff;
+        border-top: 1px solid #e2e8f0;
+        box-shadow: 0 -5px 20px rgba(15,23,42,.08);
+        z-index: 1000;
+        justify-content: center;
+    }
+
+    .mobile-nav button {
+        flex: 1;
+        border: 0;
+        background: transparent;
+        color: #94a3b8;
+        font-family: inherit;
+    }
+
+    .mobile-nav button.active {
+        color: #4f46e5;
+    }
+
+    .mobile-nav i {
+        display: block;
+        font-size: 20px;
+    }
+
+    .top-header {
+        padding: 0 15px;
+        background: #ffffff;
+    }
+
+    .brand {
+        font-size: 17px;
+    }
+
+    .user-info span {
+        display: none;
+    }
+
+    .login-box {
+        padding: 22px;
+    }
+}
+
+    
+
+.primary-btn,
+.buy-btn,
+.secondary-btn,
+.logout-btn,
+.menu-item.active {
+    color: #ffffff !important;
+    border: 0 !important;
+    font-weight: bold;
+}
+
+.primary-btn:hover,
+.buy-btn:hover,
+.secondary-btn:hover,
+.logout-btn:hover {
+    filter: brightness(1.08) saturate(1.1);
+    transform: translateY(-2px);
+}
+
+.primary-btn:active,
+.buy-btn:active,
+.secondary-btn:active,
+.logout-btn:active {
+    transform: translateY(0) scale(.97);
+}
+
+#loginPage .primary-btn {
+    background: linear-gradient(135deg,#8b5cf6,#ec4899) !important;
+    box-shadow: 0 6px 18px rgba(236,72,153,.30) !important;
+}
+
+.logout-btn {
+    background: linear-gradient(135deg,#fb7185,#e11d48) !important;
+    box-shadow: 0 5px 14px rgba(225,29,72,.28);
+}
+
+.secondary-btn {
+    background: linear-gradient(135deg,#38bdf8,#2563eb) !important;
+    box-shadow: 0 5px 14px rgba(37,99,235,.25);
+}
+
+#addStudentBtn {
+    background: linear-gradient(135deg,#34d399,#059669) !important;
+    box-shadow: 0 5px 14px rgba(5,150,105,.28);
+}
+
+#editStudentPanelBtn {
+    background: linear-gradient(135deg,#fbbf24,#f97316) !important;
+    box-shadow: 0 5px 14px rgba(249,115,22,.28);
+}
+
+#changeStudentPasswordBtn {
+    background: linear-gradient(135deg,#f472b6,#db2777) !important;
+    box-shadow: 0 5px 14px rgba(219,39,119,.28);
+}
+
+.col-12:nth-child(3n+1) .buy-btn {
+    background: linear-gradient(135deg,#60a5fa,#2563eb);
+    box-shadow: 0 5px 15px rgba(37,99,235,.28);
+}
+
+.col-12:nth-child(3n+2) .buy-btn {
+    background: linear-gradient(135deg,#34d399,#059669);
+    box-shadow: 0 5px 15px rgba(5,150,105,.28);
+}
+
+.col-12:nth-child(3n) .buy-btn {
+    background: linear-gradient(135deg,#fb923c,#ea580c);
+    box-shadow: 0 5px 15px rgba(234,88,12,.28);
+}
+
+#gradeSection .primary-btn {
+    background: linear-gradient(135deg,#34d399,#059669) !important;
+}
+
+#attendanceSection .primary-btn {
+    background: linear-gradient(135deg,#22d3ee,#0891b2) !important;
+}
+
+#order .primary-btn {
+    background: linear-gradient(135deg,#fb923c,#dc2626) !important;
+}
+
+.modal-footer .primary-btn {
+    background: linear-gradient(135deg,#34d399,#059669) !important;
+}
+
+.modal-footer .secondary-btn {
+    background: linear-gradient(135deg,#fb7185,#e11d48) !important;
+}
+
+.menu-item.active {
+    background: linear-gradient(135deg,#8b5cf6,#ec4899) !important;
+    box-shadow: 0 7px 18px rgba(236,72,153,.28);
+}
+
+.menu-item:hover:not(.active) {
+    background: linear-gradient(135deg,#ede9fe,#fce7f3);
+    color: #7c3aed;
+}
+
+.mobile-nav button.active {
+    color: #ec4899 !important;
+}
+
+
+
+.class-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 5px;
+}
+
+.col-12:nth-child(3n+1) .class-card {
+    background: linear-gradient(160deg,#eff6ff 0%,#ffffff 60%);
+    border-color: #bfdbfe;
+}
+.col-12:nth-child(3n+1) .class-card::before { background: linear-gradient(90deg,#60a5fa,#2563eb); }
+.col-12:nth-child(3n+1) .class-icon { background: #dbeafe; color: #2563eb; }
+.col-12:nth-child(3n+1) .class-stat { background: #eff6ff; border-color: #bfdbfe; }
+.col-12:nth-child(3n+1) .class-stat strong { color: #2563eb; }
+
+.col-12:nth-child(3n+2) .class-card {
+    background: linear-gradient(160deg,#ecfdf5 0%,#ffffff 60%);
+    border-color: #a7f3d0;
+}
+.col-12:nth-child(3n+2) .class-card::before { background: linear-gradient(90deg,#34d399,#059669); }
+.col-12:nth-child(3n+2) .class-icon { background: #d1fae5; color: #059669; }
+.col-12:nth-child(3n+2) .class-stat { background: #ecfdf5; border-color: #a7f3d0; }
+.col-12:nth-child(3n+2) .class-stat strong { color: #059669; }
+
+.col-12:nth-child(3n) .class-card {
+    background: linear-gradient(160deg,#fff7ed 0%,#ffffff 60%);
+    border-color: #fed7aa;
+}
+.col-12:nth-child(3n) .class-card::before { background: linear-gradient(90deg,#fb923c,#ea580c); }
+.col-12:nth-child(3n) .class-icon { background: #ffedd5; color: #ea580c; }
+.col-12:nth-child(3n) .class-stat { background: #fff7ed; border-color: #fed7aa; }
+.col-12:nth-child(3n) .class-stat strong { color: #ea580c; }
+
+.col-12:nth-child(3n+1) .class-card:hover { border-color: #60a5fa; box-shadow: 0 16px 35px rgba(37,99,235,.18); }
+.col-12:nth-child(3n+2) .class-card:hover { border-color: #34d399; box-shadow: 0 16px 35px rgba(5,150,105,.18); }
+.col-12:nth-child(3n) .class-card:hover { border-color: #fb923c; box-shadow: 0 16px 35px rgba(234,88,12,.18); }
+
+
+
+.col-12:nth-child(6n+1) { --c1:#60a5fa; --c2:#2563eb; --soft:#dbeafe; --rgb:37,99,235; }
+.col-12:nth-child(6n+2) { --c1:#34d399; --c2:#059669; --soft:#d1fae5; --rgb:5,150,105; }
+.col-12:nth-child(6n+3) { --c1:#fb923c; --c2:#ea580c; --soft:#ffedd5; --rgb:234,88,12; }
+.col-12:nth-child(6n+4) { --c1:#a78bfa; --c2:#7c3aed; --soft:#ede9fe; --rgb:124,58,237; }
+.col-12:nth-child(6n+5) { --c1:#f472b6; --c2:#db2777; --soft:#fce7f3; --rgb:219,39,119; }
+.col-12:nth-child(6n)   { --c1:#2dd4bf; --c2:#0d9488; --soft:#ccfbf1; --rgb:13,148,136; }
+
+@keyframes cardIn {
+    from { opacity: 0; transform: translateY(18px) scale(.97); }
+    to   { opacity: 1; transform: none; }
+}
+
+.col-12:nth-child(n) .class-card {
+    background: linear-gradient(155deg, var(--soft) 0%, #ffffff 55%);
+    border: 1px solid var(--soft);
+    border-radius: 24px;
+    box-shadow: 0 10px 28px rgba(var(--rgb), .14);
+    animation: cardIn .5s ease both;
+    transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s, border-color .3s;
+}
+
+.col-12:nth-child(n) .class-card::before {
+    height: 7px;
+    background: linear-gradient(90deg, var(--c1), var(--c2));
+}
+
+.col-12:nth-child(n) .class-card::after {
+    content: "";
+    position: absolute;
+    top: -45px;
+    left: -45px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(var(--rgb), .22), transparent 70%);
+    pointer-events: none;
+}
+
+.class-card > * { position: relative; z-index: 1; }
+
+.col-12:nth-child(n) .class-icon {
+    background: linear-gradient(135deg, var(--c1), var(--c2));
+    color: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 8px 18px rgba(var(--rgb), .35);
+    transition: transform .35s;
+}
+
+.col-12:nth-child(n) .class-card h4 { color: var(--c2); }
+
+.col-12:nth-child(n) .class-stat {
+    background: #ffffff;
+    border: 1px solid var(--soft);
+    border-radius: 14px;
+    box-shadow: 0 3px 10px rgba(var(--rgb), .08);
+}
+
+.col-12:nth-child(n) .class-stat strong { color: var(--c2); font-size: 18px; }
+
+.col-12:nth-child(n) .class-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--c1);
+    box-shadow: 0 22px 45px rgba(var(--rgb), .30), 0 0 0 4px rgba(var(--rgb), .08);
+}
+
+.col-12:nth-child(n) .class-card:hover .class-icon {
+    transform: rotate(-8deg) scale(1.12);
+}
+
+.col-12:nth-child(n) .buy-btn {
+    background: linear-gradient(135deg, var(--c1), var(--c2));
+    box-shadow: 0 8px 18px rgba(var(--rgb), .35);
+    border-radius: 14px;
+    padding: 13px;
+}
+
+.col-12:nth-child(2) .class-card { animation-delay: .08s; }
+.col-12:nth-child(3) .class-card { animation-delay: .16s; }
+.col-12:nth-child(4) .class-card { animation-delay: .24s; }
+.col-12:nth-child(5) .class-card { animation-delay: .32s; }
+.col-12:nth-child(6) .class-card { animation-delay: .40s; }
+
+
+
+.col-12:nth-child(n) .class-card {
+    background: linear-gradient(180deg, #ffffff 0%, #fafbfd 100%);
+    border: 1px solid #e8ecf3;
+    border-radius: 20px;
+    padding: 26px;
+    box-shadow: 0 1px 2px rgba(15,23,42,.04), 0 12px 30px -12px rgba(15,23,42,.14);
+    transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, border-color .35s;
+}
+
+.col-12:nth-child(n) .class-card::before {
+    height: 3px;
+    right: 26px;
+    left: 26px;
+    border-radius: 0 0 6px 6px;
+    background: linear-gradient(90deg, var(--c1), var(--c2));
+    opacity: .9;
+}
+
+.col-12:nth-child(n) .class-card::after {
+    top: -70px;
+    left: -70px;
+    width: 190px;
+    height: 190px;
+    background: radial-gradient(circle, rgba(var(--rgb), .10), transparent 68%);
+}
+
+.col-12:nth-child(n) .class-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 16px;
+    font-size: 22px;
+    background: linear-gradient(145deg, var(--soft), #ffffff);
+    color: var(--c2);
+    border: 1px solid rgba(var(--rgb), .18);
+    box-shadow: 0 6px 14px -6px rgba(var(--rgb), .45), inset 0 1px 0 #ffffff;
+}
+
+.col-12:nth-child(n) .class-card h4 {
+    color: #0f172a;
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -.2px;
+}
+
+.col-12:nth-child(n) .class-card p {
+    color: #64748b;
+    line-height: 1.9;
+}
+
+.col-12:nth-child(n) .class-stats { gap: 10px; }
+
+.col-12:nth-child(n) .class-stat {
+    background: rgba(var(--rgb), .05);
+    border: 1px solid rgba(var(--rgb), .12);
+    border-radius: 12px;
+    box-shadow: none;
+    color: #64748b;
+}
+
+.col-12:nth-child(n) .class-stat strong {
+    color: var(--c2);
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.col-12:nth-child(n) .class-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(var(--rgb), .35);
+    box-shadow: 0 1px 2px rgba(15,23,42,.04), 0 22px 40px -14px rgba(var(--rgb), .35);
+}
+
+.col-12:nth-child(n) .class-card:hover .class-icon {
+    transform: none;
+    background: linear-gradient(145deg, var(--c1), var(--c2));
+    color: #ffffff;
+    transition: .3s;
+}
+
+.col-12:nth-child(n) .buy-btn {
+    background: linear-gradient(135deg, var(--c1), var(--c2));
+    border-radius: 12px;
+    padding: 12px;
+    font-weight: 700;
+    letter-spacing: .1px;
+    box-shadow: 0 8px 16px -8px rgba(var(--rgb), .6);
+}
+
+.col-12:nth-child(n) .buy-btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+    box-shadow: 0 12px 20px -8px rgba(var(--rgb), .65);
+}
+
+
+/* ================= VIVID CLASS CARDS v4 ================= */
+
+.col-12:nth-child(6n+1) { --c1:#3b82f6; --c2:#1d4ed8; --soft:#dbeafe; --rgb:29,78,216; }
+.col-12:nth-child(6n+2) { --c1:#10b981; --c2:#047857; --soft:#d1fae5; --rgb:4,120,87; }
+.col-12:nth-child(6n+3) { --c1:#f97316; --c2:#c2410c; --soft:#ffedd5; --rgb:194,65,12; }
+.col-12:nth-child(6n+4) { --c1:#8b5cf6; --c2:#6d28d9; --soft:#ede9fe; --rgb:109,40,217; }
+.col-12:nth-child(6n+5) { --c1:#ec4899; --c2:#be185d; --soft:#fce7f3; --rgb:190,24,93; }
+.col-12:nth-child(6n)   { --c1:#14b8a6; --c2:#0f766e; --soft:#ccfbf1; --rgb:15,118,110; }
+
+.col-12:nth-child(n) .class-card {
+    background: linear-gradient(160deg, var(--soft) 0%, #ffffff 62%);
+    border: 1.5px solid rgba(var(--rgb), .28);
+    box-shadow: 0 14px 30px -12px rgba(var(--rgb), .38);
+}
+
+.col-12:nth-child(n) .class-card::before {
+    height: 5px;
+    right: 0;
+    left: 0;
+    border-radius: 0;
+    background: linear-gradient(90deg, var(--c1), var(--c2));
+    opacity: 1;
+}
+
+.col-12:nth-child(n) .class-card::after {
+    background: radial-gradient(circle, rgba(var(--rgb), .20), transparent 68%);
+}
+
+.col-12:nth-child(n) .class-icon {
+    background: linear-gradient(145deg, var(--c1), var(--c2));
+    color: #ffffff;
+    border: 0;
+    box-shadow: 0 10px 20px -6px rgba(var(--rgb), .6);
+}
+
+.col-12:nth-child(n) .class-card h4 { color: var(--c2); }
+
+.col-12:nth-child(n) .class-stat {
+    background: #ffffff;
+    border: 1.5px solid rgba(var(--rgb), .22);
+    box-shadow: 0 4px 10px -4px rgba(var(--rgb), .25);
+}
+
+.col-12:nth-child(n) .class-stat strong { color: var(--c2); }
+
+.col-12:nth-child(n) .class-card:hover {
+    border-color: var(--c1);
+    box-shadow: 0 24px 44px -14px rgba(var(--rgb), .55);
+}
+
+.col-12:nth-child(n) .class-card:hover .class-icon {
+    background: linear-gradient(145deg, var(--c1), var(--c2));
+}
+
+.col-12:nth-child(n) .buy-btn {
+    box-shadow: 0 10px 20px -8px rgba(var(--rgb), .75);
+}
+
+
+/* حذف خط بالای کارت کلاس */
+.class-card::before,
+.col-12:nth-child(n) .class-card::before {
+    content: none !important;
+    display: none !important;
+}
+
+
+/* ===== کلاس‌های مجازی ===== */
+.live-banner{width:100%;display:flex;align-items:center;gap:12px;border:0;border-radius:16px;padding:16px 18px;margin-bottom:14px;color:#fff;font-size:16px;font-weight:700;text-align:right;cursor:pointer;background:linear-gradient(135deg,#34d399,#059669);animation:livePulse 1.8s infinite}
+.live-banner>span:nth-child(2){flex:1}
+.live-banner small{display:block;font-weight:400;font-size:13px;opacity:.95}
+.live-banner i{font-size:24px}
+.live-dot{width:12px;height:12px;border-radius:50%;background:#fff;flex:none}
+@keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(5,150,105,.45)}50%{box-shadow:0 0 0 10px rgba(5,150,105,0)}}
+.live-muted{color:#94a3b8;font-size:14px;margin:0 0 14px}
+#liveOverlay{display:none;position:fixed;inset:0;z-index:3000;background:#0f172a;flex-direction:column}
+#liveOverlay.open{display:flex}
+.live-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 16px;background:#ffffff;border-bottom:1px solid #e5e7eb}
+.live-bar strong{color:#4f46e5}
+#liveFrame{flex:1;min-height:0}
+</style>
+</head>
+
+<body>
+
+
+    <div id="loginPage">
+
+        <div class="login-box">
+
+            <div class="login-title">
+                آموزشیار 13 ابان
+            </div>
+
+            <div class="login-subtitle">
+                ورود به سامانه آموزشی
+            </div>
+
+            <div class="row g-3">
+
+                <div class="col-md-4">
+                    <div class="user-card" onclick="selectUser(1)">
+                        <div class="user-icon">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <h4>والدین</h4>
+                        <p>مشاهده وضعیت آموزشی دانش‌آموز</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="user-card" onclick="selectUser(2)">
+                        <div class="user-icon">
+                            <i class="bi bi-person-workspace"></i>
+                        </div>
+                        <h4>دبیر</h4>
+                        <p>ثبت نمره و حضور و غیاب</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="user-card" onclick="selectUser(3)">
+                        <div class="user-icon">
+                            <i class="bi bi-person-gear"></i>
+                        </div>
+                        <h4>مدیر / معاون</h4>
+                        <p>مدیریت دانش‌آموزان و اطلاعات کلاس</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="passwordBox" style="display:none;margin-top:25px;">
+
+                <div class="panel">
+
+                    <label>رمز ورود</label>
+
+                    <input id="loginPassword"
+                        type="password"
+                        class="form-control"
+                        placeholder="رمز ورود را وارد کنید">
+
+                    <button class="primary-btn mt-3" onclick="loginWithPassword()">
+                        <i class="bi bi-box-arrow-in-left"></i>
+                        ورود
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div id="app" style="display:none;">
+
+        <header class="top-header">
+
+            <div class="brand">
+                آموزشیار 13 ابان
+                <small>سامانه مدیریت آموزشی</small>
+            </div>
+
+            <div class="user-info">
+                <i class="bi bi-person-circle"></i>
+                <span id="currentUserName"></span>
+
+                <button class="logout-btn" onclick="logout()">
+                    <i class="bi bi-box-arrow-right"></i>
+                    خروج
+                </button>
+            </div>
+
+        </header>
+
+
+        <div class="layout">
+
+            <aside class="sidebar">
+
+                <div class="menu-title">
+                    منوی اصلی
+                </div>
+
+                <button class="menu-item active" id="menuClasses" onclick="showPage('products')">
+                    <i class="bi bi-grid"></i>
+                    کلاس‌ها
+                </button>
+
+                <button class="menu-item" id="menuLive" onclick="showPage('live')">
+                    <i class="bi bi-camera-video"></i>
+                    کلاس‌های مجازی
+                </button>
+
+            </aside>
+
+
+            <main class="main-content">
+
+
+                <section id="products" class="page active">
+
+                    <div class="page-title">
+                        کلاس‌ها
+                    </div>
+
+                    <div class="page-description">
+                        کلاس مورد نظر را انتخاب کنید.
+                    </div>
+
+                    <div class="row g-3" id="classList"></div>
+
+                </section>
+
+
+
+                <section id="students" class="page">
+
+                    <div class="student-header">
+
+                        <div>
+                            <div class="page-title" id="studentsTitle">
+                                دانش‌آموزان
+                            </div>
+
+                            <div class="page-description" style="margin-bottom:0;">
+                                فهرست دانش‌آموزان کلاس
+                            </div>
+                        </div>
+
+                        <button class="secondary-btn" onclick="showPage('products')">
+                            <i class="bi bi-arrow-right"></i>
+                            بازگشت به کلاس‌ها
+                        </button>
+
+                    </div>
+
+
+                    <div class="students-toolbar">
+
+                        <div class="search-box">
+                            <i class="bi bi-search"></i>
+
+                            <input
+                                id="studentSearch"
+                                type="text"
+                                placeholder="جستجوی نام دانش‌آموز..."
+                                oninput="renderStudents()">
+                        </div>
+
+                        <button
+                            id="addStudentBtn"
+                            class="secondary-btn"
+                            onclick="openStudentModal()"
+                            style="display:none;">
+                            <i class="bi bi-person-plus"></i>
+                            افزودن دانش‌آموز
+                        </button>
+
+                    </div>
+
+
+                    <div id="studentsLoading" class="loading" style="display:none;">
+                        <i class="bi bi-arrow-repeat"></i>
+                        در حال دریافت اطلاعات...
+                    </div>
+
+                    <div class="row g-3" id="studentsList"></div>
+
+                </section>
+
+
+
+                <section id="studentPanel" class="page">
+
+                    <div class="student-header">
+
+                        <div class="student-header-title">
+
+                            <div class="student-big-icon">
+                                <i class="bi bi-person"></i>
+                            </div>
+
+                            <div>
+                                <div class="page-title" id="panelStudentName">
+                                    دانش‌آموز
+                                </div>
+
+                                <div class="page-description" id="panelClassName"
+                                    style="margin:0;">
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+
+                            <button class="secondary-btn" onclick="showPage('students')">
+                                <i class="bi bi-arrow-right"></i>
+                                بازگشت
+                            </button>
+
+                            <button
+                                id="editStudentPanelBtn"
+                                class="secondary-btn"
+                                onclick="openEditCurrentStudent()"
+                                style="display:none;">
+                                <i class="bi bi-pencil"></i>
+                                ویرایش نام
+                            </button>
+
+                            <button
+                                id="changeStudentPasswordBtn"
+                                class="secondary-btn"
+                                onclick="openStudentPasswordModal()"
+                                style="display:none;">
+                                <i class="bi bi-key"></i>
+                                تغییر رمز کارنامه
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="row g-3">
+
+                        <div class="col-6 col-md-3">
+                            <div class="summary-card">
+                                <i class="bi bi-plus-circle"></i>
+                                <strong id="positiveCount">0</strong>
+                                <span>نمره‌های مثبت</span>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-3">
+                            <div class="summary-card">
+                                <i class="bi bi-dash-circle"></i>
+                                <strong id="negativeCount">0</strong>
+                                <span>نمره‌های منفی</span>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-3">
+                            <div class="summary-card">
+                                <i class="bi bi-check-circle"></i>
+                                <strong id="presentCount">0</strong>
+                                <span>حضور</span>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-3">
+                            <div class="summary-card">
+                                <i class="bi bi-x-circle"></i>
+                                <strong id="absentCount">0</strong>
+                                <span>غیبت</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <div id="gradeSection" class="section-box">
+
+                        <div class="section-title">
+                            <i class="bi bi-pencil-square"></i>
+                            ثبت نمره
+                        </div>
+
+                        <div class="row g-3">
+
+                            <div class="col-md-3">
+
+                                <label>نوع نمره</label>
+
+                                <select id="gradeType" class="form-select">
+                                    <option value="positive">
+                                        نمره مثبت
+                                    </option>
+
+                                    <option value="negative">
+                                        نمره منفی
+                                    </option>
+                                </select>
+
+                            </div>
+
+
+                            <div class="col-md-3">
+
+                                <label>مقدار نمره</label>
+
+                                <input
+                                    id="gradeValue"
+                                    type="number"
+                                    class="form-control"
+                                    placeholder="مثلاً 1">
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label>توضیحات</label>
+
+                                <input
+                                    id="gradeNote"
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="توضیح نمره...">
+
+                            </div>
+
+
+                            <div class="col-12">
+
+                                <button class="primary-btn" onclick="recordGrade()">
+                                    <i class="bi bi-check2-circle"></i>
+                                    ثبت نمره
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div id="attendanceSection" class="section-box">
+
+                        <div class="section-title">
+                            <i class="bi bi-calendar-check"></i>
+                            حضور و غیاب
+                        </div>
+
+                        <div class="row g-3">
+
+                            <div class="col-md-4">
+
+                                <label>وضعیت</label>
+
+                                <select id="attendanceStatus" class="form-select">
+
+                                    <option value="present">
+                                        حاضر
+                                    </option>
+
+                                    <option value="absent">
+                                        غایب
+                                    </option>
+
+                                    <option value="late">
+                                        تأخیر
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="col-md-8">
+
+                                <label>توضیحات</label>
+
+                                <input
+                                    id="attendanceNote"
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="توضیح...">
+
+                            </div>
+
+
+                            <div class="col-12">
+
+                                <button class="primary-btn" onclick="recordAttendance()">
+                                    <i class="bi bi-calendar-plus"></i>
+                                    ثبت حضور و غیاب
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="section-box">
+
+                        <div class="section-title">
+                            <i class="bi bi-card-checklist"></i>
+                            کارنامه و سوابق آموزشی
+                        </div>
+
+                        <div id="recordsList"></div>
+
+                    </div>
+
+                </section>
+
+
+
+                <section id="detail" class="page">
+
+                    <div class="page-title">
+                        اطلاعات کلاس
+                    </div>
+
+                    <div class="panel mt-4">
+                        <h4 id="detailTitle"></h4>
+                        <p id="detailDescription" class="text-secondary mt-3"></p>
+
+                        <button class="primary-btn mt-3" onclick="openStudents(currentClassId)">
+                            <i class="bi bi-people"></i>
+                            مشاهده دانش‌آموزان
+                        </button>
+                    </div>
+
+                </section>
+
+
+                <section id="orderIntro" class="page">
+
+                    <div class="page-title">
+                        پذیرش و ادامه
+                    </div>
+
+                    <div class="panel mt-4">
+
+                        <p>
+                            برای ادامه ثبت اطلاعات، گزینه زیر را انتخاب کنید.
+                        </p>
+
+                        <button class="primary-btn mt-3" onclick="showPage('order')">
+                            پذیرش و ادامه
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <section id="order" class="page">
+
+                    <div class="page-title">
+                        ثبت سفارش
+                    </div>
+
+                    <div class="panel mt-4">
+
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+                                <label>نام و نام خانوادگی</label>
+                                <input id="orderName" class="form-control">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>شماره تماس</label>
+                                <input id="orderPhone" class="form-control">
+                            </div>
+
+                            <div class="col-12">
+                                <label>توضیحات</label>
+                                <textarea id="orderDescription"
+                                    class="form-control"></textarea>
+                            </div>
+
+                            <div class="col-12">
+                                <button class="primary-btn" onclick="submitOrder()">
+                                    ثبت اطلاعات
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <section id="live" class="page">
+
+                    <div class="page-title">
+                        کلاس‌های مجازی
+                    </div>
+
+                    <div class="page-description" id="liveDescription"></div>
+
+                    <div id="liveStaffBox"></div>
+
+                    <div class="row g-3" id="liveClassList"></div>
+
+                </section>
+
+
+                <section id="success" class="page">
+
+                    <div class="panel text-center" style="padding:60px 20px;">
+
+                        <i class="bi bi-check-circle"
+                            style="font-size:70px;color:#aaa;"></i>
+
+                        <h3 class="mt-3">
+                            عملیات با موفقیت انجام شد
+                        </h3>
+
+                        <button class="primary-btn mt-4"
+                            onclick="showPage('products')">
+                            بازگشت به کلاس‌ها
+                        </button>
+
+                    </div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+
+
+
+        <div class="mobile-nav">
+
+            <button class="active" id="mobileClasses"
+                onclick="showPage('products')">
+                <i class="bi bi-grid"></i>
+                کلاس‌ها
+            </button>
+
+            <button id="mobileLive" onclick="showPage('live')">
+                <i class="bi bi-camera-video"></i>
+                مجازی
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="modal fade" id="studentModal" tabindex="-1">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title" id="studentModalTitle">
+                        افزودن دانش‌آموز
+                    </h5>
+
+                    <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"></button>
+
+                </div>
+
+
+                <div class="modal-body">
+
+                    <input type="hidden" id="editStudentId">
+
+                    <label>
+                        نام و نام خانوادگی دانش‌آموز
+                    </label>
+
+                    <input
+                        id="studentNameInput"
+                        class="form-control"
+                        placeholder="نام دانش‌آموز را وارد کنید">
+
+                </div>
+
+
+                <div class="modal-footer">
+
+                    <button
+                        class="secondary-btn"
+                        data-bs-dismiss="modal">
+                        انصراف
+                    </button>
+
+                    <button
+                        class="primary-btn"
+                        style="width:auto;padding:10px 30px;"
+                        onclick="saveStudent()">
+                        ذخیره
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="modal fade" id="reportPasswordModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">مشاهده کارنامه</h5>
+                    <button type="button" class="btn-close" onclick="hideAppModal('reportPasswordModal')"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="reportPasswordStudentName" style="color:#aaa;"></p>
+                    <label>رمز کارنامه دانش‌آموز</label>
+                    <input id="reportCardPassword" type="password" inputmode="numeric" class="form-control" placeholder="رمز کارنامه را وارد کنید">
+                    <div style="color:#777;font-size:12px;margin-top:10px;">رمز پیش‌فرض دانش‌آموزان: 1111</div>
+                </div>
+                <div class="modal-footer">
+                    <button class="secondary-btn" onclick="hideAppModal('reportPasswordModal')">انصراف</button>
+                    <button class="primary-btn" style="width:auto;padding:10px 30px;" onclick="verifyAndOpenReport()">
+                        <i class="bi bi-eye"></i>
+                        مشاهده کارنامه
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="studentPasswordModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">تغییر رمز کارنامه</h5>
+                    <button type="button" class="btn-close" onclick="hideAppModal('studentPasswordModal')"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="changePasswordStudentName" style="color:#aaa;"></p>
+                    <label>رمز جدید</label>
+                    <input id="newStudentPassword" type="password" inputmode="numeric" class="form-control" placeholder="رمز جدید را وارد کنید">
+                    <label class="mt-3">تکرار رمز جدید</label>
+                    <input id="confirmStudentPassword" type="password" inputmode="numeric" class="form-control" placeholder="رمز جدید را دوباره وارد کنید">
+                </div>
+                <div class="modal-footer">
+                    <button class="secondary-btn" onclick="hideAppModal('studentPasswordModal')">انصراف</button>
+                    <button class="primary-btn" style="width:auto;padding:10px 30px;" onclick="saveStudentPassword()">
+                        <i class="bi bi-check2"></i>
+                        ذخیره رمز
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="liveOverlay">
+        <div class="live-bar">
+            <strong id="liveTitle"></strong>
+            <div class="d-flex gap-2">
+                <button class="secondary-btn" id="liveEndBtn" onclick="endLive(liveCurrent)">پایان کلاس برای همه</button>
+                <button class="secondary-btn" onclick="leaveLive()">خروج</button>
+            </div>
+        </div>
+        <div id="liveFrame"></div>
+    </div>
+
+    <div id="toastBox"></div>
+
+
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+
+
+        const SCRIPT_URL =
+            "https://script.google.com/macros/s/AKfycbyDA8bz1Oybr60u5fplge61v86nhN2ApLRsDgApIHQcJKEBAFYAj95ab_UoyITGtiQ5/exec";
+
+
+        const USERS = {
+
+            1: {
+                name: "والدین",
+                password: null
+            },
+
+            2: {
+                name: "دبیر",
+                password: "9999"
+            },
+
+            3: {
+                name: "مدیر / معاون",
+                password: "1111"
+            }
+
+        };
+
+
+        const classes = [
+
+            {
+                id: "class1",
+                title: "701",
+                description: "مدیریت و ثبت اطلاعات آموزشی دانش‌آموزان کلاس 701"
+            },
+
+            {
+                id: "class2",
+                title: "702",
+                description: "مدیریت و ثبت اطلاعات آموزشی دانش‌آموزان کلاس 702"
+            },
+
+            {
+                id: "class3",
+                title: "703",
+                description: "مدیریت و ثبت اطلاعات آموزشی دانش‌آموزان کلاس 703"
+            },
+
+            {
+                id: "class4",
+                title: "704",
+                description: "مدیریت و ثبت اطلاعات آموزشی دانش‌آموزان کلاس 704"
+            },
+
+            {
+                id: "class5",
+                title: "801",
+                description: "مدیریت و ثبت اطلاعات آموزشی دانش‌آموزان کلاس 801"
+            },
+
+            {
+                id: "class6",
+                title: "802",
+                description: "مدیریت و ثبت اطلاعات آموزشی دانش‌آموزان کلاس 802"
+            },
+
+            {
+                id: "class7",
+                title: "803",
+                description: "مدیریت و ثبت اطلاعات آموزشی دانش‌آموزان کلاس 803"
+            },
+
+            {
+                id: "class8",
+                title: "804",
+                description: "مدیریت و ثبت اطلاعات آموزشی دانش‌آموزان کلاس 804"
+            },
+
+            {
+                id: "class9",
+                title: "901",
+                description: "مدیریت و ثبت اطلاعات آموزشی دانش‌آموزان کلاس 901"
+            },
+
+            {
+                id: "class10",
+                title: "902",
+                description: "مدیریت و ثبت اطلاعات آموزشی دانش‌آموزان کلاس 902"
+            },
+
+            {
+                id: "class11",
+                title: "903",
+                description: "مدیریت و ثبت اطلاعات آموزشی دانش‌آموزان کلاس 903"
+            },
+
+            {
+                id: "class12",
+                title: "904",
+                description: "مدیریت و ثبت اطلاعات آموزشی دانش‌آموزان کلاس 904"
+            }
+
+        ];
+
+
+        let currentUser = null;
+        let currentClassId = null;
+        let currentStudent = null;
+
+        let students = [];
+        let records = [];
+
+
+
+        function selectUser(id) {
+
+            id = Number(id);
+
+            if (!USERS[id]) {
+                return;
+            }
+
+            currentUser = id;
+
+            if (id === 1) {
+
+                sessionStorage.setItem(
+                    "craftTableUser",
+                    String(id)
+                );
+
+                enterApp();
+                return;
+            }
+
+            const box = document.getElementById("passwordBox");
+            const input = document.getElementById("loginPassword");
+
+            if (!box || !input) {
+                showToast("بخش ورود رمز پیدا نشد. صفحه را یک بار تازه‌سازی کنید.");
+                return;
+            }
+
+            box.style.display = "block";
+            input.value = "";
+            input.dataset.user = String(id);
+
+            setTimeout(() => input.focus(), 50);
+        }
+
+
+        function loginWithPassword() {
+
+            const password =
+                document.getElementById("loginPassword").value;
+
+            const userId =
+                Number(
+                    document.getElementById("loginPassword").dataset.user
+                );
+
+            if (
+                USERS[userId] &&
+                USERS[userId].password === password
+            ) {
+
+                currentUser = userId;
+
+                sessionStorage.setItem(
+                    "craftTableUser",
+                    String(userId)
+                );
+
+                enterApp();
+
+            } else {
+
+                showToast("رمز ورود صحیح نیست.");
+
+            }
+
+        }
+
+
+        function enterApp() {
+
+            currentUser = Number(currentUser);
+
+            if (!USERS[currentUser]) {
+                currentUser = null;
+                sessionStorage.removeItem("craftTableUser");
+                return;
+            }
+
+            const loginPage = document.getElementById("loginPage");
+            const app = document.getElementById("app");
+
+            if (loginPage) loginPage.style.display = "none";
+            if (app) app.style.display = "block";
+
+            const userName = document.getElementById("currentUserName");
+            if (userName) userName.textContent = USERS[currentUser].name;
+
+            const addBtn = document.getElementById("addStudentBtn");
+            const editBtn = document.getElementById("editStudentPanelBtn");
+            const passwordBtn = document.getElementById("changeStudentPasswordBtn");
+
+            if (addBtn) addBtn.style.display = currentUser === 3 ? "block" : "none";
+            if (editBtn) editBtn.style.display = currentUser === 3 ? "block" : "none";
+            if (passwordBtn) passwordBtn.style.display = currentUser === 3 ? "block" : "none";
+
+            try {
+                renderClasses();
+                showPage("products");
+                startLivePolling();
+            } catch (error) {
+                console.error("enterApp error:", error);
+                showToast("پنل باز شد، اما در بارگذاری اطلاعات خطایی رخ داد.");
+            }
+        }
+
+
+        function logout() {
+
+            sessionStorage.removeItem("craftTableUser");
+
+            location.reload();
+
+        }
+
+
+        function showPage(pageId) {
+
+            document.querySelectorAll(".page").forEach(page => {
+                page.classList.remove("active");
+            });
+
+            const page = document.getElementById(pageId);
+
+            if (page) {
+                page.classList.add("active");
+            }
+
+            const isLive = pageId === "live";
+
+            ["menuClasses", "mobileClasses"].forEach(id =>
+                document.getElementById(id)?.classList.toggle("active", !isLive));
+
+            ["menuLive", "mobileLive"].forEach(id =>
+                document.getElementById(id)?.classList.toggle("active", isLive));
+
+            if (isLive) {
+                renderLive();
+                fetchLive();
+            }
+
+        }
+
+
+
+        function renderClasses() {
+
+            const container =
+                document.getElementById("classList");
+
+            container.innerHTML = "";
+
+            classes.forEach((item, index) => {
+
+                container.innerHTML += `
+
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                        <div class="class-card">
+
+                            <div class="class-icon">
+                                <i class="bi bi-grid-1x2-fill"></i>
+                            </div>
+
+                            <h4>
+                                ${item.title}
+                            </h4>
+
+                            <p>
+                                ${item.description}
+                            </p>
+
+                            <div class="class-stats">
+
+                                <div class="class-stat">
+                                    <strong id="classCount_${item.id}">
+                                        -
+                                    </strong>
+                                    دانش‌آموز
+                                </div>
+
+                                <div class="class-stat">
+                                    <strong>
+                                        ${index + 1}
+                                    </strong>
+                                    شماره کلاس
+                                </div>
+
+                            </div>
+
+                            <div id="liveBadge_${item.id}"></div>
+
+                            <button
+                                class="buy-btn"
+                                onclick="openStudents('${item.id}')">
+
+                                <i class="bi bi-people"></i>
+
+                                ${currentUser === 1 ? "مشاهده کارنامه" : "مشاهده و مدیریت دانش‌آموزان"}
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            });
+
+            updateClassCounts();
+
+        }
+
+
+        async function openStudents(classId) {
+
+            currentClassId = classId;
+
+            const classInfo =
+                classes.find(x => x.id === classId);
+
+            document.getElementById("studentsTitle").textContent =
+                classInfo ? classInfo.title + " - دانش‌آموزان" : "دانش‌آموزان";
+
+            document.getElementById("studentSearch").value = "";
+
+            showPage("students");
+
+            await loadStudents();
+
+        }
+
+
+        async function loadStudents() {
+
+            const loading =
+                document.getElementById("studentsLoading");
+
+            loading.style.display = "block";
+
+            document.getElementById("studentsList").innerHTML = "";
+
+            try {
+
+                const response =
+                    await fetch(
+                        SCRIPT_URL +
+                        "?action=getStudents&classId=" +
+                        encodeURIComponent(currentClassId)
+                    );
+
+                const result =
+                    await response.json();
+
+                if (
+                    result &&
+                    result.success &&
+                    Array.isArray(result.students)
+                ) {
+
+                    students = result.students;
+
+                } else {
+
+                    students = [];
+
+                }
+
+            } catch (error) {
+
+                console.error(error);
+
+                showToast(
+                    "دریافت اطلاعات انجام نشد. اتصال اینترنت و Apps Script را بررسی کنید."
+                );
+
+                students = [];
+
+            }
+
+            loading.style.display = "none";
+
+            renderStudents();
+
+            updateClassCounts();
+
+        }
+
+
+        function renderStudents() {
+
+            const container =
+                document.getElementById("studentsList");
+
+            const search =
+                document
+                    .getElementById("studentSearch")
+                    .value
+                    .trim()
+                    .toLowerCase();
+
+            const filtered =
+                students.filter(student =>
+                    String(student.name || "")
+                        .toLowerCase()
+                        .includes(search)
+                );
+
+
+            if (filtered.length === 0) {
+
+                container.innerHTML = `
+
+                    <div class="col-12">
+
+                        <div class="empty-state">
+
+                            <i class="bi bi-person-x"></i>
+
+                            دانش‌آموزی پیدا نشد.
+
+                        </div>
+
+                    </div>
+
+                `;
+
+                return;
+            }
+
+
+            container.innerHTML = "";
+
+
+            filtered.forEach((student, index) => {
+
+                const originalIndex =
+                    students.findIndex(
+                        x => String(x.id) === String(student.id)
+                    );
+
+                container.innerHTML += `
+
+                    <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+
+                        <div
+                            class="student-card"
+                            onclick="openStudentPanel('${student.id}')">
+
+                            <div class="student-number">
+                                ${originalIndex + 1}
+                            </div>
+
+                            <div class="student-name">
+                                ${escapeHtml(
+                                    student.name || "بدون نام"
+                                )}
+                            </div>
+
+                            <div class="student-mini-stats">
+
+                                <div class="mini-stat">
+
+                                    <strong>
+                                        ${Number(student.positiveGrades || 0)}
+                                    </strong>
+
+                                    مثبت
+
+                                </div>
+
+                                <div class="mini-stat">
+
+                                    <strong>
+                                        ${Number(student.negativeGrades || 0)}
+                                    </strong>
+
+                                    منفی
+
+                                </div>
+
+                                <div class="mini-stat">
+
+                                    <strong>
+                                        ${Number(student.absent || 0)}
+                                    </strong>
+
+                                    غیبت
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            });
+
+        }
+
+
+
+        function showAppModal(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
+
+            el.style.display = "block";
+            el.classList.add("show");
+            el.setAttribute("aria-hidden", "false");
+            document.body.classList.add("modal-open");
+
+            if (!document.getElementById(id + "Backdrop")) {
+                const backdrop = document.createElement("div");
+                backdrop.id = id + "Backdrop";
+                backdrop.className = "modal-backdrop fade show";
+                backdrop.onclick = () => hideAppModal(id);
+                document.body.appendChild(backdrop);
+            }
+        }
+
+        function hideAppModal(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.style.display = "none";
+                el.classList.remove("show");
+                el.setAttribute("aria-hidden", "true");
+            }
+
+            const backdrop = document.getElementById(id + "Backdrop");
+            if (backdrop) backdrop.remove();
+
+            document.body.classList.remove("modal-open");
+        }
+
+
+
+        async function openStudentPanel(studentId) {
+
+            const student =
+                students.find(
+                    x => String(x.id) === String(studentId)
+                );
+
+            if (!student) {
+                showToast("اطلاعات دانش‌آموز پیدا نشد.");
+                return;
+            }
+
+            currentStudent = student;
+
+            document.getElementById("panelStudentName").textContent =
+                student.name || "بدون نام";
+
+            const classInfo =
+                classes.find(x => x.id === currentClassId);
+
+            document.getElementById("panelClassName").textContent =
+                classInfo ? classInfo.title : "";
+
+            document.getElementById("gradeSection").style.display =
+                currentUser === 1 ? "none" : "block";
+
+            document.getElementById("attendanceSection").style.display =
+                currentUser === 1 ? "none" : "block";
+
+            document.getElementById("editStudentPanelBtn").style.display =
+                currentUser === 3 ? "block" : "none";
+
+            document.getElementById("changeStudentPasswordBtn").style.display =
+                currentUser === 3 ? "block" : "none";
+
+            if (currentUser === 1) {
+                document.getElementById("reportPasswordStudentName").textContent =
+                    "دانش‌آموز: " + (student.name || "بدون نام");
+
+                document.getElementById("reportCardPassword").value = "";
+                showAppModal("reportPasswordModal");
+                setTimeout(() => document.getElementById("reportCardPassword")?.focus(), 100);
+                return;
+            }
+
+            updateStudentSummary();
+            showPage("studentPanel");
+            await loadRecords(student.id, currentUser);
+
+        }
+
+
+        async function verifyAndOpenReport() {
+
+            if (!currentStudent) return;
+
+            const password =
+                document.getElementById("reportCardPassword").value.trim();
+
+            if (!password) {
+                showToast("رمز کارنامه را وارد کنید.");
+                return;
+            }
+
+            try {
+                const response = await postData({
+                    action: "verifyStudentPassword",
+                    studentId: currentStudent.id,
+                    password: password,
+                    userId: currentUser
+                });
+
+                if (!response.success) {
+                    showToast(response.message || "رمز کارنامه صحیح نیست.");
+                    return;
+                }
+
+                hideAppModal("reportPasswordModal");
+
+                updateStudentSummary();
+                showPage("studentPanel");
+                await loadRecords(currentStudent.id, currentUser, password);
+
+            } catch (error) {
+                console.error(error);
+                showToast("خطا در بررسی رمز کارنامه.");
+            }
+        }
+
+        function updateStudentSummary() {
+
+            if (!currentStudent) {
+                return;
+            }
+
+            document.getElementById("positiveCount").textContent =
+                Number(currentStudent.positiveGrades || 0);
+
+            document.getElementById("negativeCount").textContent =
+                Number(currentStudent.negativeGrades || 0);
+
+            document.getElementById("presentCount").textContent =
+                Number(currentStudent.present || 0);
+
+            document.getElementById("absentCount").textContent =
+                Number(currentStudent.absent || 0);
+
+        }
+
+
+        async function loadRecords(studentId, userId = currentUser, studentPassword = "") {
+
+            const container =
+                document.getElementById("recordsList");
+
+            container.innerHTML = `
+                <div class="loading">
+                    در حال دریافت سوابق...
+                </div>
+            `;
+
+            try {
+
+                const params = new URLSearchParams({
+                    action: "getRecords",
+                    studentId: String(studentId),
+                    userId: String(userId)
+                });
+
+                if (studentPassword) {
+                    params.set("password", studentPassword);
+                }
+
+                const response =
+                    await fetch(SCRIPT_URL + "?" + params.toString());
+
+                const result =
+                    await response.json();
+
+                records =
+                    result &&
+                    result.success &&
+                    Array.isArray(result.records)
+                        ? result.records
+                        : [];
+
+            } catch (error) {
+
+                console.error(error);
+
+                records = [];
+
+            }
+
+            renderRecords();
+
+        }
+
+
+        function renderRecords() {
+
+            const container =
+                document.getElementById("recordsList");
+
+            if (!records.length) {
+
+                container.innerHTML = `
+
+                    <div class="empty-state">
+
+                        <i class="bi bi-clock-history"></i>
+
+                        هنوز سابقه‌ای برای این دانش‌آموز ثبت نشده است.
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            container.innerHTML = "";
+
+
+            records
+                .slice()
+                .reverse()
+                .forEach(record => {
+
+                    let title = "";
+                    let icon = "bi-info-circle";
+
+                    if (record.type === "grade_positive") {
+                        title =
+                            "نمره مثبت: " +
+                            (record.value || "1");
+
+                        icon = "bi-plus-circle";
+                    }
+
+                    else if (record.type === "grade_negative") {
+                        title =
+                            "نمره منفی: " +
+                            (record.value || "1");
+
+                        icon = "bi-dash-circle";
+                    }
+
+                    else if (record.type === "attendance_present") {
+                        title = "حضور";
+                        icon = "bi-check-circle";
+                    }
+
+                    else if (record.type === "attendance_absent") {
+                        title = "غیبت";
+                        icon = "bi-x-circle";
+                    }
+
+                    else if (record.type === "attendance_late") {
+                        title = "تأخیر";
+                        icon = "bi-clock";
+                    }
+
+
+                    container.innerHTML += `
+
+                        <div class="record-item">
+
+                            <div class="record-right">
+
+                                <div class="record-icon">
+                                    <i class="bi ${icon}"></i>
+                                </div>
+
+                                <div>
+
+                                    <div class="record-title">
+                                        ${escapeHtml(title)}
+                                    </div>
+
+                                    ${
+                                        record.note
+                                            ? `
+                                                <div class="record-note">
+                                                    ${escapeHtml(record.note)}
+                                                </div>
+                                            `
+                                            : ""
+                                    }
+
+                                </div>
+
+                            </div>
+
+                            <div class="record-date">
+                                ${escapeHtml(
+                                    record.date || ""
+                                )}
+                            </div>
+
+                        </div>
+
+                    `;
+
+                });
+
+        }
+
+
+        async function recordGrade() {
+
+            if (!currentStudent) {
+                return;
+            }
+
+            if (currentUser === 1) {
+
+                showToast("والدین اجازه ثبت نمره ندارند.");
+
+                return;
+
+            }
+
+
+            const type =
+                document.getElementById("gradeType").value;
+
+            const value =
+                document.getElementById("gradeValue").value.trim();
+
+            const note =
+                document.getElementById("gradeNote").value.trim();
+
+
+            if (!value) {
+
+                showToast("مقدار نمره را وارد کنید.");
+
+                return;
+
+            }
+
+
+            const data = {
+
+                action: "recordGrade",
+
+                studentId: currentStudent.id,
+
+                classId: currentClassId,
+
+                type: type,
+
+                value: value,
+
+                note: note,
+
+                date: getToday(),
+
+                userId: currentUser
+
+            };
+
+
+            try {
+
+                const response =
+                    await postData(data);
+
+                if (!response.success) {
+
+                    showToast(
+                        response.message ||
+                        "ثبت نمره انجام نشد."
+                    );
+
+                    return;
+
+                }
+
+
+                currentStudent =
+                    response.student || currentStudent;
+
+
+                const index =
+                    students.findIndex(
+                        x =>
+                            String(x.id) ===
+                            String(currentStudent.id)
+                    );
+
+
+                if (index !== -1) {
+                    students[index] = currentStudent;
+                }
+
+
+                updateStudentSummary();
+
+                document.getElementById("gradeValue").value = "";
+
+                document.getElementById("gradeNote").value = "";
+
+                await loadRecords(currentStudent.id);
+
+                renderStudents();
+
+                updateClassCounts();
+
+
+                if (type === "negative") {
+
+                    showToast(
+                        "نمره منفی ثبت شد. نمره‌های منفی: " +
+                        Number(currentStudent.negativeGrades || 0)
+                    );
+
+                } else {
+
+                    showToast("نمره مثبت با موفقیت ثبت شد.");
+
+                }
+
+            } catch (error) {
+
+                console.error(error);
+
+                showToast("خطا در ثبت نمره.");
+
+            }
+
+        }
+
+
+
+        async function recordAttendance() {
+
+            if (!currentStudent) {
+                return;
+            }
+
+            if (currentUser === 1) {
+
+                showToast("والدین اجازه ثبت حضور و غیاب ندارند.");
+
+                return;
+
+            }
+
+
+            const status =
+                document.getElementById("attendanceStatus").value;
+
+            const note =
+                document.getElementById("attendanceNote").value.trim();
+
+
+            try {
+
+                const response =
+                    await postData({
+
+                        action: "recordAttendance",
+
+                        studentId: currentStudent.id,
+
+                        classId: currentClassId,
+
+                        status: status,
+
+                        note: note,
+
+                        date: getToday(),
+
+                        userId: currentUser
+
+                    });
+
+
+                if (!response.success) {
+
+                    showToast(
+                        response.message ||
+                        "ثبت حضور و غیاب انجام نشد."
+                    );
+
+                    return;
+
+                }
+
+
+                currentStudent =
+                    response.student || currentStudent;
+
+
+                const index =
+                    students.findIndex(
+                        x =>
+                            String(x.id) ===
+                            String(currentStudent.id)
+                    );
+
+
+                if (index !== -1) {
+                    students[index] = currentStudent;
+                }
+
+
+                updateStudentSummary();
+
+                document.getElementById("attendanceNote").value = "";
+
+                await loadRecords(currentStudent.id);
+
+                renderStudents();
+
+                updateClassCounts();
+
+
+                showToast("حضور و غیاب ثبت شد.");
+
+            } catch (error) {
+
+                console.error(error);
+
+                showToast("خطا در ثبت حضور و غیاب.");
+
+            }
+
+        }
+
+
+        function openStudentModal(studentId = "") {
+
+            if (currentUser !== 3) {
+
+                showToast("فقط مدیر / معاون می‌تواند نام دانش‌آموزان را مدیریت کند.");
+
+                return;
+
+            }
+
+
+            document.getElementById("editStudentId").value =
+                studentId || "";
+
+            if (studentId) {
+
+                const student =
+                    students.find(
+                        x =>
+                            String(x.id) ===
+                            String(studentId)
+                    );
+
+                document.getElementById("studentModalTitle").textContent =
+                    "ویرایش دانش‌آموز";
+
+                document.getElementById("studentNameInput").value =
+                    student ? student.name : "";
+
+            } else {
+
+                document.getElementById("studentModalTitle").textContent =
+                    "افزودن دانش‌آموز";
+
+                document.getElementById("studentNameInput").value = "";
+
+            }
+
+
+            const modal =
+                new bootstrap.Modal(
+                    document.getElementById("studentModal")
+                );
+
+            modal.show();
+
+        }
+
+
+        function openEditCurrentStudent() {
+
+            if (!currentStudent) {
+                return;
+            }
+
+            openStudentModal(currentStudent.id);
+
+        }
+
+
+        async function saveStudent() {
+
+            if (currentUser !== 3) {
+                return;
+            }
+
+
+            const studentId =
+                document.getElementById("editStudentId").value;
+
+            const name =
+                document.getElementById("studentNameInput")
+                    .value
+                    .trim();
+
+
+            if (!name) {
+
+                showToast("نام دانش‌آموز را وارد کنید.");
+
+                return;
+
+            }
+
+
+            try {
+
+                const response =
+                    await postData({
+
+                        action: "saveStudent",
+
+                        id: studentId,
+
+                        classId: currentClassId,
+
+                        name: name,
+
+                        userId: currentUser
+
+                    });
+
+
+                if (!response.success) {
+
+                    showToast(
+                        response.message ||
+                        "ذخیره انجام نشد."
+                    );
+
+                    return;
+
+                }
+
+
+                bootstrap.Modal
+                    .getInstance(
+                        document.getElementById("studentModal")
+                    )
+                    ?.hide();
+
+
+                showToast("اطلاعات دانش‌آموز ذخیره شد.");
+
+                await loadStudents();
+
+
+                if (
+                    currentStudent &&
+                    studentId &&
+                    String(currentStudent.id) === String(studentId)
+                ) {
+
+                    const updated =
+                        students.find(
+                            x =>
+                                String(x.id) ===
+                                String(studentId)
+                        );
+
+                    if (updated) {
+
+                        currentStudent = updated;
+
+                        document.getElementById(
+                            "panelStudentName"
+                        ).textContent =
+                            updated.name;
+
+                        updateStudentSummary();
+
+                    }
+
+                }
+
+            } catch (error) {
+
+                console.error(error);
+
+                showToast("خطا در ذخیره دانش‌آموز.");
+
+            }
+
+        }
+
+
+        function openStudentPasswordModal() {
+
+            if (currentUser !== 3 || !currentStudent) {
+                showToast("فقط مدیر / معاون می‌تواند رمز کارنامه را تغییر دهد.");
+                return;
+            }
+
+            document.getElementById("changePasswordStudentName").textContent =
+                "دانش‌آموز: " + (currentStudent.name || "بدون نام");
+
+            document.getElementById("newStudentPassword").value = "";
+            document.getElementById("confirmStudentPassword").value = "";
+
+            showAppModal("studentPasswordModal");
+            setTimeout(() => document.getElementById("newStudentPassword")?.focus(), 100);
+        }
+
+
+        async function saveStudentPassword() {
+
+            if (currentUser !== 3 || !currentStudent) return;
+
+            const password =
+                document.getElementById("newStudentPassword").value.trim();
+
+            const confirm =
+                document.getElementById("confirmStudentPassword").value.trim();
+
+            if (!password) {
+                showToast("رمز جدید را وارد کنید.");
+                return;
+            }
+
+            if (password.length < 4) {
+                showToast("رمز باید حداقل ۴ کاراکتر باشد.");
+                return;
+            }
+
+            if (password !== confirm) {
+                showToast("تکرار رمز با رمز جدید یکسان نیست.");
+                return;
+            }
+
+            try {
+                const response = await postData({
+                    action: "changeStudentPassword",
+                    studentId: currentStudent.id,
+                    password: password,
+                    userId: currentUser
+                });
+
+                if (!response.success) {
+                    showToast(response.message || "تغییر رمز انجام نشد.");
+                    return;
+                }
+
+                hideAppModal("studentPasswordModal");
+
+                showToast("رمز کارنامه با موفقیت تغییر کرد.");
+
+            } catch (error) {
+                console.error(error);
+                showToast("خطا در تغییر رمز کارنامه.");
+            }
+        }
+
+
+
+        async function postData(data) {
+
+            const response =
+                await fetch(
+                    SCRIPT_URL,
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "text/plain;charset=utf-8"
+                        },
+
+                        body: JSON.stringify(data)
+                    }
+                );
+
+            return await response.json();
+
+        }
+
+
+
+        async function updateClassCounts() {
+
+            classes.forEach(async item => {
+
+                try {
+
+                    const response =
+                        await fetch(
+                            SCRIPT_URL +
+                            "?action=getStudents&classId=" +
+                            encodeURIComponent(item.id)
+                        );
+
+                    const result =
+                        await response.json();
+
+                    const count =
+                        result &&
+                        result.success &&
+                        Array.isArray(result.students)
+                            ? result.students.length
+                            : 0;
+
+                    const element =
+                        document.getElementById(
+                            "classCount_" + item.id
+                        );
+
+                    if (element) {
+                        element.textContent = count;
+                    }
+
+                } catch (error) {
+
+                    const element =
+                        document.getElementById(
+                            "classCount_" + item.id
+                        );
+
+                    if (element) {
+                        element.textContent = "-";
+                    }
+
+                }
+
+            });
+
+        }
+
+
+
+        function openProduct(classId) {
+
+            currentClassId = classId;
+
+            const item =
+                classes.find(x => x.id === classId);
+
+            if (!item) {
+                return;
+            }
+
+            document.getElementById("detailTitle").textContent =
+                item.title;
+
+            document.getElementById("detailDescription").textContent =
+                item.description;
+
+            showPage("detail");
+
+        }
+
+
+
+        async function submitOrder() {
+
+            const name =
+                document.getElementById("orderName").value.trim();
+
+            const phone =
+                document.getElementById("orderPhone").value.trim();
+
+            const description =
+                document.getElementById("orderDescription")
+                    .value
+                    .trim();
+
+
+            if (!name || !phone) {
+
+                showToast("نام و شماره تماس را وارد کنید.");
+
+                return;
+
+            }
+
+
+            try {
+
+                const result =
+                    await postData({
+
+                        action: "submitOrder",
+
+                        name: name,
+
+                        phone: phone,
+
+                        description: description,
+
+                        classId: currentClassId,
+
+                        userId: currentUser,
+
+                        date: getToday()
+
+                    });
+
+
+                if (result.success) {
+
+                    showPage("success");
+
+                } else {
+
+                    showToast(
+                        result.message ||
+                        "ثبت اطلاعات انجام نشد."
+                    );
+
+                }
+
+            } catch (error) {
+
+                console.error(error);
+
+                showToast("خطا در ثبت اطلاعات.");
+
+            }
+
+        }
+
+
+
+        function getToday() {
+
+            const d = new Date();
+
+            const y =
+                d.getFullYear();
+
+            const m =
+                String(d.getMonth() + 1)
+                    .padStart(2, "0");
+
+            const day =
+                String(d.getDate())
+                    .padStart(2, "0");
+
+            return `${y}/${m}/${day}`;
+
+        }
+
+
+        function escapeHtml(value) {
+
+            return String(value ?? "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+        }
+
+
+        function showToast(message) {
+
+            const box =
+                document.getElementById("toastBox");
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "toast-message";
+
+            item.textContent =
+                message;
+
+            box.appendChild(item);
+
+            setTimeout(() => {
+
+                item.remove();
+
+            }, 3000);
+
+        }
+
+
+
+
+        /* ================= کلاس‌های مجازی =================
+           ویدیو: Jitsi Meet IFrame API (بدون نیاز به کلید)
+           وضعیت «در حال برگزاری»: از طریق همان SCRIPT_URL
+           (actionهای getLiveClasses / startLiveClass / endLiveClass)
+           اگر بک‌اند هنوز آپدیت نشده باشد، موقتاً از localStorage استفاده می‌شود. */
+
+        const LIVE_DOMAIN = "meet.jit.si";
+        const LIVE_PREFIX = "Amoozeshyar13Aban";
+        const STAFF_ID = "staff";
+
+        let liveState = {};
+        let liveCurrent = null;
+        let liveApi = null;
+        let livePollTimer = null;
+
+        function startLivePolling() {
+            try { liveState = JSON.parse(localStorage.getItem("liveClasses") || "{}"); } catch (_) { liveState = {}; }
+            renderLive();
+            fetchLive();
+            if (!livePollTimer) livePollTimer = setInterval(fetchLive, 15000);
+        }
+
+        async function fetchLive() {
+            try {
+                const ctl = new AbortController();
+                const t = setTimeout(() => ctl.abort(), 8000);
+                const r = await fetch(SCRIPT_URL + "?action=getLiveClasses", { signal: ctl.signal });
+                clearTimeout(t);
+                const j = await r.json();
+                if (!j || !j.success || !j.live) throw new Error("no backend");
+                liveState = j.live;
+            } catch (e) {
+                try { liveState = JSON.parse(localStorage.getItem("liveClasses") || "{}"); }
+                catch (_) { liveState = {}; }
+            }
+            if (liveCurrent && !liveState[liveCurrent]) {
+                leaveLive();
+                showToast("کلاس پایان یافت.");
+            }
+            renderLive();
+        }
+
+        async function saveLive(id, live, room) {
+            try { localStorage.setItem("liveClasses", JSON.stringify(liveState)); } catch (_) { }
+            try {
+                await postData({
+                    action: live ? "startLiveClass" : "endLiveClass",
+                    classId: id,
+                    room: room || "",
+                    by: USERS[currentUser].name
+                });
+            } catch (e) { console.warn("live API unavailable, using local state", e); }
+        }
+
+        function liveBanner(id, text) {
+            if (!liveState[id]) return "";
+            return `<button class="live-banner" onclick="joinLive('${id}')">
+                <span class="live-dot"></span>
+                <span>${text || "کلاس در حال برگزاری است"}<small>برای ورود کلیک کنید</small></span>
+                <i class="bi bi-box-arrow-in-left"></i></button>`;
+        }
+
+        function liveActions(id, startLabel) {
+            const live = !!liveState[id];
+            if (currentUser === 1) return "";
+            if (!live) {
+                const canStart = currentUser === 2 && id !== STAFF_ID || currentUser === 3 && id === STAFF_ID;
+                return canStart
+                    ? `<button class="buy-btn" onclick="startLive('${id}')"><i class="bi bi-camera-video"></i> ${startLabel}</button>`
+                    : `<div class="live-muted">در حال حاضر کلاسی برگزار نمی‌شود.</div>`;
+            }
+            return `<div class="d-grid gap-2">
+                <button class="buy-btn" onclick="joinLive('${id}')"><i class="bi bi-box-arrow-in-left"></i> ورود به کلاس</button>
+                <button class="secondary-btn" onclick="endLive('${id}')">پایان کلاس برای همه</button></div>`;
+        }
+
+        function renderLive() {
+            if (!currentUser) return;
+
+            document.getElementById("liveDescription").textContent =
+                currentUser === 1 ? "در صورت برگزاری کلاس، از همین‌جا وارد شوید."
+                : currentUser === 2 ? "برای شروع کلاس آنلاین، کلاس مورد نظر را انتخاب کنید."
+                : "جلسه دبیران را برگزار کنید و کلاس‌های در حال برگزاری را ببینید.";
+
+            // جلسه دبیران (پنل مدیر: برگزاری | پنل دبیر: ورود)
+            const staff = document.getElementById("liveStaffBox");
+            if (currentUser === 3) {
+                staff.innerHTML = `<div class="panel" style="margin-bottom:20px;">
+                    <h5 style="margin-bottom:6px;">جلسه دبیران</h5>
+                    <div class="live-muted">برگزاری جلسه آنلاین برای همه دبیران</div>
+                    ${liveActions(STAFF_ID, "برگزاری جلسه برای دبیران")}</div>`;
+            } else if (currentUser === 2) {
+                staff.innerHTML = liveBanner(STAFF_ID, "جلسه دبیران در حال برگزاری است");
+            } else {
+                staff.innerHTML = "";
+            }
+
+            // لیست کلاس‌ها
+            document.getElementById("liveClassList").innerHTML = classes.map(item => `
+                <div class="col-12 col-md-6 col-xl-4">
+                    <div class="class-card">
+                        <div class="class-icon"><i class="bi bi-camera-video-fill"></i></div>
+                        <h4>${item.title}</h4>
+                        <p>${item.description}</p>
+                        ${currentUser === 1
+                            ? (liveState[item.id] ? liveBanner(item.id) : `<div class="live-muted">در حال حاضر کلاسی برگزار نمی‌شود.</div>`)
+                            : (liveState[item.id] ? `<div class="live-muted" style="color:#059669;">● در حال برگزاری</div>` : "") + liveActions(item.id, "برگزاری کلاس برای دانش‌آموزان")}
+                    </div>
+                </div>`).join("");
+
+            // بنر والدین در صفحه‌ی اصلی کلاس‌ها
+            classes.forEach(item => {
+                const el = document.getElementById("liveBadge_" + item.id);
+                if (el) el.innerHTML = currentUser === 1 ? liveBanner(item.id) : "";
+            });
+        }
+
+        async function startLive(id) {
+            const rnd = Math.random().toString(36).slice(2, 8) + Date.now().toString(36);
+            const room = `${LIVE_PREFIX}-${id}-${rnd}`;
+            liveState[id] = { room, startedAt: Date.now(), by: USERS[currentUser].name };
+            await saveLive(id, true, room);
+            renderLive();
+            joinLive(id);
+        }
+
+        async function endLive(id) {
+            if (!id || !confirm("کلاس برای همه پایان یابد؟")) return;
+            delete liveState[id];
+            await saveLive(id, false);
+            leaveLive();
+            renderLive();
+            showToast("کلاس پایان یافت.");
+        }
+
+        function loadJitsi() {
+            return new Promise((resolve, reject) => {
+                if (window.JitsiMeetExternalAPI) return resolve();
+                const s = document.createElement("script");
+                s.src = `https://${LIVE_DOMAIN}/external_api.js`;
+                s.onload = resolve;
+                s.onerror = reject;
+                document.head.appendChild(s);
+            });
+        }
+
+        async function joinLive(id) {
+            const l = liveState[id];
+            if (!l) { showToast("این کلاس در حال برگزاری نیست."); return; }
+
+            liveCurrent = id;
+            const cls = classes.find(c => c.id === id);
+            document.getElementById("liveTitle").textContent =
+                id === STAFF_ID ? "جلسه دبیران" : "کلاس " + (cls ? cls.title : "");
+            document.getElementById("liveEndBtn").style.display = currentUser === 1 ? "none" : "";
+            document.getElementById("liveOverlay").classList.add("open");
+
+            try {
+                await loadJitsi();
+                liveApi = new JitsiMeetExternalAPI(LIVE_DOMAIN, {
+                    roomName: l.room,
+                    parentNode: document.getElementById("liveFrame"),
+                    width: "100%",
+                    height: "100%",
+                    lang: "fa",
+                    userInfo: { displayName: USERS[currentUser].name },
+                    configOverwrite: { prejoinPageEnabled: false }
+                });
+                liveApi.addListener("readyToClose", leaveLive);
+            } catch (e) {
+                leaveLive();
+                window.open(`https://${LIVE_DOMAIN}/${l.room}`, "_blank");
+            }
+        }
+
+        function leaveLive() {
+            if (liveApi) { try { liveApi.dispose(); } catch (_) { } liveApi = null; }
+            document.getElementById("liveFrame").innerHTML = "";
+            document.getElementById("liveOverlay").classList.remove("open");
+            liveCurrent = null;
+        }
+
+        window.selectUser = selectUser;
+        window.loginWithPassword = loginWithPassword;
+        window.enterApp = enterApp;
+        window.showPage = showPage;
+        window.openStudents = openStudents;
+        window.openStudentPanel = openStudentPanel;
+        window.logout = logout;
+
+        window.addEventListener("error", function (event) {
+            console.error("Application error:", event.error || event.message);
+        });
+
+
+ 
+
+        window.addEventListener("DOMContentLoaded", () => {
+
+            const savedUser =
+                sessionStorage.getItem("craftTableUser");
+
+            if (savedUser && USERS[savedUser]) {
+
+                currentUser =
+                    Number(savedUser);
+
+                enterApp();
+
+            } else {
+
+                document.getElementById("loginPage").style.display =
+                    "flex";
+
+                document.getElementById("app").style.display =
+                    "none";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
